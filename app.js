@@ -2,6 +2,8 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
+const textRouter = require('./router/api/comments')
+
 const app = express()
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
@@ -17,6 +19,8 @@ app.use(
 
 app.use(express.json())
 app.use(express.static('/public'))
+
+app.use('/api/text', textRouter)
 
 app.use((req, res) => {
     res.status(404).json({ message: 'Not found' })

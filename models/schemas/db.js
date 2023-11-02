@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const uriDb = process.env.URI_DB
 
-const db = mongoose.connect(uriDb, {
-    useNewUrlParser: true,
-});
+// const db = mongoose.connect(uriDb, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// });
+const db = mongoose.connect(uriDb)
 
 mongoose.connection.on('connected', () => {
     console.log('Database connection successful');
